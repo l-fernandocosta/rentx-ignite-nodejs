@@ -1,4 +1,4 @@
-import { ListSpecificationsUseCase } from "./ListSpecificationsUseCase";
+/* import { ListSpecificationsUseCase } from "./ListSpecificationsUseCase";
 import { Request, Response } from "express";
 
 class ListSpecificationController {
@@ -12,3 +12,4 @@ class ListSpecificationController {
 }
 
 export { ListSpecificationController };
+ */

@@ -1,4 +1,4 @@
-import { Specification } from "../../entities/Specification";
+/* import { Specification } from "../../entities/Specification";
 import { ISpecificationRepository } from "../../repositories/ISpecificationRepository";
 
 class ListSpecificationsUseCase {
@@ -12,3 +12,4 @@ class ListSpecificationsUseCase {
 }
 
 export { ListSpecificationsUseCase };
+ */

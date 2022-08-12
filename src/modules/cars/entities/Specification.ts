@@ -1,9 +1,18 @@
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
+@Entity("specifications")
 class Specification {
+  @PrimaryColumn()
   id?: string;
+
+  @Column("varchar")
   name: string;
-  descripion: string;
+
+  @Column("varchar")
+  description: string;
+
+  @CreateDateColumn()
   created_at: Date;
 
   constructor() {

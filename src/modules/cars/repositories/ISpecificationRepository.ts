@@ -1,9 +1,5 @@
 import { Specification } from "../entities/Specification";
-
-interface ICreateSpecificationDTO {
-  name: string;
-  description: string;
-}
+import { ICreateSpecificationDTO } from "./dtos/ICreateSpecificationDTO";
 
 interface ISpecificationRepository {
   create({ name, description }: ICreateSpecificationDTO): Promise<void>;
@@ -11,4 +7,4 @@ interface ISpecificationRepository {
   list(): Promise<Specification[]>;
 }
 
-export { ISpecificationRepository, ICreateSpecificationDTO };
+export { ISpecificationRepository };

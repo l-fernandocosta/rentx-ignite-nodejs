@@ -1,4 +1,6 @@
 import express from "express";
+import "reflect-metadata";
+import "./shared/container/index";
 import { router } from "./routes";
 import { AppDataSource } from "./data-source";
 

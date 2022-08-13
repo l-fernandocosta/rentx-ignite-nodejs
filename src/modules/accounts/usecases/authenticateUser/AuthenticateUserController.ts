@@ -12,7 +12,7 @@ class AuthenticateUserController {
       password,
     });
 
-    return response.status(201).json(userAuthInfo);
+    return response.json(userAuthInfo);
   }
 }
 

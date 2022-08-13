@@ -9,9 +9,6 @@ class User {
   @Column("varchar")
   name: string;
 
-  @Column("varchar", { unique: true })
-  username: string;
-
   @Column("varchar")
   password: string;
 

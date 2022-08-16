@@ -10,7 +10,7 @@ class AuthenticateUserController {
     const userAuthInfo = await authenticateUserUseCase.handle({
       email,
       password,
-    });
+    })
 
     return response.json(userAuthInfo);
   }

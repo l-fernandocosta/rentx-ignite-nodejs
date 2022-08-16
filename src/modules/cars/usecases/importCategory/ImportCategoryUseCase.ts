@@ -2,6 +2,7 @@ import fs from "fs";
 import { parse } from "csv-parse";
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 import { inject, injectable } from "tsyringe";
+import { AppErrors } from "../../../../errors/AppErrors";
 
 interface IImportCategory {
   name: string;
@@ -46,7 +47,8 @@ class ImportCategoryUseCase {
         name
       );
 
-      if (categoryAlreadyExists) throw new Error("Category already exists");
+      if (categoryAlreadyExists)
+        throw new AppErrors(401, "Category already exists");
 
       await this.categoriesRepository.create({ name, description });
     });

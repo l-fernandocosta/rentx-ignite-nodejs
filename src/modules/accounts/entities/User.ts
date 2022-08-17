@@ -6,6 +6,9 @@ class User {
   @PrimaryColumn()
   id?: string;
 
+  @Column("varchar", { nullable: true })
+  avatar?: string;
+
   @Column("varchar")
   name: string;
 

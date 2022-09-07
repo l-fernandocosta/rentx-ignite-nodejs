@@ -1,12 +1,14 @@
-import express, { Request, Response, NextFunction } from "express";
 import "express-async-errors";
-import swaggerUi from "swagger-ui-express";
-import swaggerFile from "./swagger.json";
 import "reflect-metadata";
-import "./shared/container/index";
+import "@shared/container";
+
+import swaggerFile from "../../../swagger.json";
+import swaggerUi from "swagger-ui-express";
+
 import { router } from "./routes";
-import { AppDataSource } from "./data-source";
-import { AppErrors } from "./errors/AppErrors";
+import { AppErrors } from "@shared/errors/AppErrors";
+import { AppDataSource } from "data-source";
+import express, { NextFunction, Request, Response } from "express";
 
 AppDataSource.initialize()
   .then(() => {
@@ -17,19 +19,19 @@ AppDataSource.initialize()
     app.use(router);
     app.use(
       (
-        err: Error,
+        error: AppErrors,
         request: Request,
         response: Response,
         next: NextFunction
       ) => {
-        if (err instanceof AppErrors) {
-          return response.status(err.statusCode).json({
-            message: err.message,
+        if (error instanceof AppErrors) {
+          return response.status(error.statusCode).json({
+            message: error.errorMessage,
           });
         }
         return response.status(500).json({
           status: "error",
-          message: `Internal server error - ${err.message}`,
+          message: `Internal server error - ${error}`,
         });
       }
     );
@@ -37,6 +39,6 @@ AppDataSource.initialize()
       console.log("Server is running 🔥");
     });
   })
-  .catch((err) => {
-    console.log(err);
+  .catch((error) => {
+    console.log(error);
   });

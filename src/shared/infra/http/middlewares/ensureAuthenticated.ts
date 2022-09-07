@@ -1,7 +1,7 @@
+import { AppErrors } from "@shared/errors/AppErrors";
+import { UserRepository } from "@modules/accounts/infra/typeorm/repositories/UserRepository";
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
-import { AppErrors } from "../errors/AppErrors";
-import { UserRepository } from "../modules/accounts/repositories/implementations/UserRepository";
 
 export async function ensureAuthenticated(
   request: Request,
@@ -19,7 +19,10 @@ export async function ensureAuthenticated(
   const [, token] = authHeaders.split(" ");
 
   try {
-    const { sub: user_id } = verify(token, process.env.TOKEN_SECRET);
+    const { sub: user_id } = verify(
+      token,
+      "ac08cad51f2309505142d67eacef5bdaf18027da"
+    );
     const userRepository = new UserRepository();
 
     const user = userRepository.findById(String(user_id));

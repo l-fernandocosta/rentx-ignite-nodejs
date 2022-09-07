@@ -1,8 +1,8 @@
+import { ICreateCategoryDTO } from "@modules/cars/repositories/dtos/ICreateCategoryDTO";
+import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
+import { AppDataSource } from "data-source";
 import { Repository } from "typeorm";
-import { AppDataSource } from "../../../../data-source";
-import { Category } from "../../entities/Category";
-import { ICreateCategoryDTO } from "../dtos/ICreateCategoryDTO";
-import { ICategoriesRepository } from "../ICategoriesRepository";
+import { Category } from "../entities/Category";
 
 class CategoryRepository implements ICategoriesRepository {
   private repository: Repository<Category>;
@@ -13,7 +13,6 @@ class CategoryRepository implements ICategoriesRepository {
 
   async create({ name, description }: ICreateCategoryDTO): Promise<void> {
     const category = this.repository.create({ name, description });
-
     await this.repository.save(category);
   }
 

@@ -1,5 +1,12 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuidv4 } from "uuid";
+import { Car } from "./Car";
 
 @Entity("category")
 class Category {
@@ -15,6 +22,8 @@ class Category {
   @CreateDateColumn()
   created_at: Date;
 
+  @OneToMany(() => Car, (car) => car.category)
+  cars: Car[];
   constructor() {
     if (!this.id) {
       this.id = uuidv4();

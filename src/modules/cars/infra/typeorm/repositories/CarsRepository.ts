@@ -32,10 +32,9 @@ class CarsRepository implements ICarsRepository {
     await this.repository.save(car);
     return car;
   }
-  findByLicensePlate(license_plate: string): Promise<Car> {
-    const car = this.repository.findOneBy({
-      license_plate,
-    });
+  async findByLicensePlate(license_plate: string): Promise<Car> {
+    const car = await this.repository.findOneBy({ license_plate });
+
     return car;
   }
 }

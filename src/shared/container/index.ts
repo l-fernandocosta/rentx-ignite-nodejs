@@ -7,7 +7,6 @@ import { SpecificationRepository } from "@modules/cars/infra/typeorm/repositorie
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 
 import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
-import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/CarsRepositoryInMemory";
 import { ISpecificationRepository } from "@modules/cars/repositories/ISpecificationRepository";
 
 import { container } from "tsyringe";

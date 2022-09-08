@@ -23,7 +23,8 @@ class Category {
   created_at: Date;
 
   @OneToMany(() => Car, (car) => car.category)
-  cars: Car[];
+  car: Car[];
+
   constructor() {
     if (!this.id) {
       this.id = uuidv4();

@@ -9,33 +9,33 @@ import {
 import { v4 as uuid } from "uuid";
 import { Category } from "./Category";
 
-@Entity("cars")
+@Entity("car")
 class Car {
   @PrimaryColumn()
   id: string;
 
-  @Column("varchar")
+  @Column({ type: "varchar" })
   name: string;
 
-  @Column("text")
+  @Column({ type: "text" })
   description: string;
 
-  @Column("bigint")
+  @Column({ type: "bigint" })
   daily_rate: number;
 
-  @Column("boolean")
-  available = true;
+  @Column({ type: "boolean" })
+  available: boolean;
 
-  @Column("text")
+  @Column({ type: "text" })
   license_plate: string;
 
-  @Column("bigint")
+  @Column({ type: "bigint" })
   fine_amount: number;
 
-  @Column("text")
+  @Column({ type: "text" })
   brand: string;
 
-  @ManyToOne(() => Category, (category) => category.cars)
+  @ManyToOne(() => Category, (category) => category.car)
   @JoinColumn({ name: "category_id" })
   category: Category;
 
@@ -48,6 +48,7 @@ class Car {
   constructor() {
     if (!this.id) {
       this.id = uuid();
+      this.available = true;
     }
   }
 }
